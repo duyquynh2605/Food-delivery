@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Component, useState } from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -53,53 +53,96 @@ const rightSwipeActions = () => {
 };
 
 
-const ListItem = ({ item, index }) => (
-  <GestureHandlerRootView>
-      <Swipeable
-    renderRightActions={rightSwipeActions}>
-      <View style={{justifyContent:'center',alignItems:'center'}}>
-        <View style={{width:'80%',paddingHorizontal: 20,paddingVertical: 20,backgroundColor: '#FFFFFF',flexDirection:'row',marginVertical:10,borderRadius:20}}>
+const ListItem = ({ item, index }) => {
+  // const { count } = this.state;
+  return(
+    <GestureHandlerRootView>
+    <Swipeable
+  renderRightActions={rightSwipeActions}>
+    <View style={{justifyContent:'center',alignItems:'center'}}>
+      <View style={{width:'80%',paddingHorizontal: 20,paddingVertical: 20,backgroundColor: '#FFFFFF',flexDirection:'row',marginVertical:10,borderRadius:20}}>
 
-        <Image source={item.image}/>
-        <View style={{ flexDirection:'column',marginLeft:10}}>
-          <Text style={{color:'#000',fontWeight:'bold'}}>{item.name}</Text>
-          <Text style={{color:'#FA4A0C',fontWeight:'bold'}}>{item.gia}</Text>
-      </View>
-
-  </View>
-      </View>
-  </Swipeable>
-  </GestureHandlerRootView>
-  
-
-);
-
-const Man7 = () => {
-  return (
-    <>
-      <StatusBar />
-      <SafeAreaView style={styles.container}>
-        <View style={{flexDirection: 'row',justifyContent:'space-between',alignItems:'center',flex:1,width:'50%',marginLeft: 40}}>
-            <Image
-                source={require('./image/Vector.png')} 
-          />
-            <Text style={{fontSize: 18, fontWeight: '600',color:'#000000'}}>Cart</Text>
-        </View>
-        <FlatList
-          data={data}
-          keyExtractor={(item) => item.id}
-          renderItem={ ListItem }
-
-        />
-              <View style={{flex: 1}}>
-          <TouchableOpacity style={{justifyContent:'center',alignItems:'center',backgroundColor: '#FA4A0C', width: '70%', height: 50, marginLeft: 55, marginTop: 20, borderRadius: 20}}>
-              <Text style={{color: '#F6F6F9',fontSize:17, fontWeight:'600'}}>Complete order</Text>
+      <Image source={item.image}/>
+      <View style={{ flexDirection:'column',marginLeft:10}}>
+        <Text style={{color:'#000',fontWeight:'bold'}}>{item.name}</Text>
+        <View style={{flexDirection:'row',}}>
+        <Text style={{color:'#FA4A0C',fontWeight:'bold'}}>{item.gia}</Text>
+        <View style={{height:30,width:70,backgroundColor:'#FA4A0C',justifyContent:'space-between',alignItems:'center',flexDirection:'row',borderRadius:20,marginTop:10,marginLeft:70}}>
+        <View style={{width:'80%',flexDirection:'row',justifyContent:'space-between',marginLeft:7}}>
+          <TouchableOpacity
+            onPress={this.Sub}
+          >
+            <Text style={{color:'#FFF'}}>-</Text>
           </TouchableOpacity>
+          <View>
+            <Text style={{color:'#FFF'}}>{1}</Text>
+          </View>
+          <TouchableOpacity
+            onPress={this.Add}
+          >
+            <Text style={{color:'#FFF'}}>+</Text>
+          </TouchableOpacity>
+        </View>
       </View>
-      </SafeAreaView>
-    </>
-  );
-};
+        </View>
+      </View>
+
+      
+
+</View>
+    </View>
+</Swipeable>
+</GestureHandlerRootView>
+);
+}
+
+
+class Man7 extends Component {
+  // constructor(props) {
+  //   super(props);
+  //   this.state = { count: 0 };
+  // }
+
+  // Add = () => {
+  //   this.setState({
+  //     count: this.state.count + 1
+  //   });
+  // };
+  // Sub = () => {
+  //   this.setState({
+  //     count: this.state.count - 1
+  //   });
+  // };
+  render() {
+    return (
+      <>
+        <StatusBar />
+        <SafeAreaView style={styles.container}>
+          <View style={{flexDirection: 'row',justifyContent:'space-between',alignItems:'center',flex:1,width:'50%',marginLeft: 40}}>
+              <Image
+                  source={require('./image/Vector.png')} 
+            />
+              <Text style={{fontSize: 18, fontWeight: '600',color:'#000000'}}>Cart</Text>
+          </View>
+          <FlatList
+            data={data}
+            keyExtractor={(item) => item.id}
+            renderItem={ ListItem }
+  
+          />
+                <View style={{flex: 1}}>
+            <TouchableOpacity style={{justifyContent:'center',alignItems:'center',backgroundColor: '#FA4A0C', width: '70%', height: 50, marginLeft: 55, marginTop: 20, borderRadius: 20}}>
+                <Text style={{color: '#F6F6F9',fontSize:17, fontWeight:'600'}}>Complete order</Text>
+            </TouchableOpacity>
+        </View>
+        </SafeAreaView>
+      </>
+    );
+  };
+}
+
+
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
