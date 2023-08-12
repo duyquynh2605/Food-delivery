@@ -55,11 +55,3 @@ const Man2 = () => {
 
 
 
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
-
-export default Man2;
