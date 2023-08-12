@@ -55,3 +55,11 @@ const Man2 = () => {
 
 
 
+//commit
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
+
+export default Man2;
